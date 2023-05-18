@@ -1,0 +1,24 @@
+import math
+
+def calculate_initial_velocity(distance, angle, time):
+    # 각도를 라디안으로 변환
+    angle_rad = math.radians(angle)
+    
+    # 수평 속도 계산
+    horizontal_velocity = distance / time
+    
+    # 초기 속력 계산
+    initial_velocity = horizontal_velocity / math.cos(angle_rad)
+    
+    return initial_velocity
+
+# 사용자 입력 받기
+distance = float(input("수평 거리 (미터): "))
+angle = float(input("각도 (도): "))
+time = float(input("시간 (초): "))
+
+# 초기 속력 계산
+initial_velocity = calculate_initial_velocity(distance, angle, time)
+
+# 결과 출력
+print("초기 속력:", initial_velocity, "미터/초")
