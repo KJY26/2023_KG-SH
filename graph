@@ -1,0 +1,37 @@
+import pygame
+import math
+
+def calculate_initial_velocity(distance, angle, time):
+    # 각도를 라디안으로 변환
+    angle_rad = math.radians(angle)
+
+    # 수평 속도 계산
+    horizontal_velocity = distance / time
+
+    # 초기 속력 계산
+    initial_velocity = horizontal_velocity / math.cos(angle_rad)
+
+    return initial_velocity
+
+
+def calculate_horizontal_distance(angle, initial_velocity, time):
+    # 각도를 라디안으로 변환
+    angle_rad = math.radians(angle)
+
+    # 수평 속도 계산
+    horizontal_velocity = initial_velocity * math.cos(angle_rad)
+
+    # 수평 거리 계산
+    horizontal_distance = horizontal_velocity * time
+
+    return horizontal_distance
+
+
+angle = float(input("각도 (도): "))
+time = float(input("시간 (초): "))
+initial_velocity = float(input("초기 속도 (미터/초): "))
+
+horizontal_distance = calculate_horizontal_distance(angle, initial_velocity, time)
+
+for i in range(0,90):
+    horizontal_distance = calculate_horizontal_distance(i, initial_velocity, )
