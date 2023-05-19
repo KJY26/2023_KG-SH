@@ -1,5 +1,7 @@
-import pygame
+import turtle
 import math
+
+g = 9.8
 
 def calculate_initial_velocity(distance, angle, time):
     # 각도를 라디안으로 변환
@@ -14,24 +16,42 @@ def calculate_initial_velocity(distance, angle, time):
     return initial_velocity
 
 
-def calculate_horizontal_distance(angle, initial_velocity, time):
+#def calculate_horizontal_distance(angle, initial_velocity, time):
     # 각도를 라디안으로 변환
-    angle_rad = math.radians(angle)
+#    angle_rad = math.radians(angle)
 
     # 수평 속도 계산
-    horizontal_velocity = initial_velocity * math.cos(angle_rad)
+#    horizontal_velocity = initial_velocity * math.cos(angle_rad)
 
     # 수평 거리 계산
-    horizontal_distance = horizontal_velocity * time
+#    horizontal_distance = horizontal_velocity * time
+
+#    return horizontal_distance
+def calculate_horizontal_distance(angle, initial_velocity):
+    angle_rad = math.radians(angle)
+    horizontal_distance = (initial_velocity**2)*math.sin(2*angle_rad)/g
 
     return horizontal_distance
 
 
-angle = float(input("각도 (도): "))
-time = float(input("시간 (초): "))
-initial_velocity = float(input("초기 속도 (미터/초): "))
+#초기속력 구하기
+angle = float(input("초기속력 구하기 위한 각도 (도): "))
+time = float(input("초기속력 구하기 위한 시간 (초): "))
+#initial_velocity = float(input("초기 속도 (미터/초): "))
+distance = float(input("초기속력 구하기 위한 거리 (미터): "))
+#initial_velocity = calculate_initial_velocity()
 
-horizontal_distance = calculate_horizontal_distance(angle, initial_velocity, time)
+initial_velocity = calculate_initial_velocity(distance, angle, time)
+#horizontal_distance = calculate_horizontal_distance(angle, initial_velocity, time)
+
+turtle.title('각도-거리 그래프')
+#turtle.hideturtle()
+turtle.speed(0)
 
 for i in range(0,90):
-    horizontal_distance = calculate_horizontal_distance(i, initial_velocity, )
+    horizontal_distance = calculate_horizontal_distance(i, initial_velocity)
+    print(i,"-",horizontal_distance,)
+    turtle.goto(i*10-450,horizontal_distance*10)
+    turtle.stamp()
+
+turtle.done()
